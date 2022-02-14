@@ -1,15 +1,21 @@
 using System;
 
-internal class Singleton<T>
+internal class Singleton<T> where T: class, new()
 {
-    private static T what;
+    private static T instance = null;
 
-    public Singleton(T value) => what = value;
+    public Singleton() { }
 
         
     public static T Instance
     {
-        get => what;
+        get { 
+            if (instance == null)
+            {
+                instance = new T();
+            }
+            return instance;
+        }
         set => throw new NotSupportedException("This operation is not supported");
     }
 
