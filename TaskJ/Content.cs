@@ -2,8 +2,14 @@ using System;
 
 internal class Content
 {
+    public readonly int size;
+    public readonly string information;
+   
+
+
     public Content(int size, string information)
     {
-        throw new NotImplementedException();
+        this.size = size;
+        this.information = information; 
     }
 }

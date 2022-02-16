@@ -2,18 +2,29 @@ using System;
 
 internal class Programmer
 {
-    private int GetAlmostRandomNumber()
+    public int Id { get; set; }
+
+    public int GetAlmostRandomNumber()
     {
         return (int) Math.Abs(Math.Sin(GetIdDigitsSum() % 11 + 1) * 12345);
     }
 
     public Programmer(int id)
     {
-        throw new NotImplementedException();
+        Id = id;
     }
 
-    private int GetIdDigitsSum()
+    public int GetIdDigitsSum()
     {
-        throw new NotImplementedException();
+        int k = 0;
+        int idd = Id;
+        
+        while (idd > 0)
+        {
+            k += idd % 10;
+            idd /= 10;
+        }
+
+        return k;
     }
 }

@@ -1,9 +1,11 @@
 using System;
 
-internal class Game
+internal class Game : Content
 {
-    public Game(int size, string name, string developer, string genre, short levels)
+
+
+    public Game(int size, string name, string developer, string genre, short levels) : base(size, name)
     {
-        throw new NotImplementedException();
+
     }
 }
