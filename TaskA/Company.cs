@@ -3,10 +3,14 @@ using System.Collections.Generic;
 
 internal class Company
 {
+    public List<TeamLead> TeamLeads;
+
+    public int cntOfTeamLead { get; }
+    public int[] cntOfProgrammers { get; }
     public Company(int teamLeadsAmount, int[] programmersAmount)
     {
-        TeamLeadsAmount = teamLeadsAmount;
-        ProgrammersAmount = programmersAmount;
+        cntOfTeamLead = teamLeadsAmount;
+        cntOfProgrammers = programmersAmount;
 
         TeamLeads = new();
 
@@ -24,26 +28,22 @@ internal class Company
         }
     }
 
-    public List<TeamLead> TeamLeads;
-
-    public int TeamLeadsAmount { get; }
-    public int[] ProgrammersAmount { get; }
+ 
 
     public void PrintTeams()
     {
         foreach (var item in TeamLeads)
         {
-            int k = 0;
-            Console.WriteLine($"Team lead #{item.Id}");
-            Console.WriteLine($"Amount of programmers in team: {item.Programmers.Count}");
+            Console.WriteLine($"Team lead #{item.Id.ToString()}");
+            Console.WriteLine($"Amount of programmers in team: {item.Programmers.Count.ToString()}");
+            int cnt = 0;
+
             foreach (var prog in item.Programmers)
             {
-                k += prog.GetAlmostRandomNumber();
+                cnt += prog.GetAlmostRandomNumber();
             }
-            k += item.GetAlmostRandomNumber();
-            Console.WriteLine($"Written lines of code: {k}");
-
-            //Console.WriteLine(item);
+            cnt += item.GetAlmostRandomNumber();
+            Console.WriteLine($"Written lines of code: {cnt}");
         }
         Console.WriteLine();
     }

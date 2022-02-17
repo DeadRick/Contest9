@@ -3,14 +3,18 @@ using System;
 internal class Blogger
 {
     private DayOfWeek postDay;
+    public event Action<DateTime> Notify;
 
     public Blogger(DayOfWeek postDay)
     {
-        throw new NotImplementedException();
+        this.postDay = postDay;
     }
 
     public void MakePost(DateTime date)
     {
-        throw new NotImplementedException();
+        if (date.DayOfWeek == postDay)
+        {
+            Notify?.Invoke(date);
+        }
     }
 }

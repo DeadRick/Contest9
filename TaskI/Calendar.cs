@@ -6,6 +6,9 @@ internal class Calendar
 
     public void Simulate(DateTime startTime, DateTime endTime)
     {
-        throw new NotImplementedException();
+        for (var i = startTime; i <= endTime; i = i.AddDays(1))
+        {
+            EveryDayNotification?.Invoke(i);
+        }
     }
 }

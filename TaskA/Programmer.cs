@@ -2,12 +2,14 @@ using System;
 
 internal class Programmer
 {
-    public int Id { get; set; }
 
     public int GetAlmostRandomNumber()
     {
-        return (int) Math.Abs(Math.Sin(GetIdDigitsSum() % 11 + 1) * 12345);
+        return (int) Math.Abs(Math.Sin(GetIdDigitsSum() % 11 + 1) * 12345); // can change
     }
+
+    public int Id { get; set; }
+
 
     public Programmer(int id)
     {
@@ -16,15 +18,23 @@ internal class Programmer
 
     public int GetIdDigitsSum()
     {
-        int k = 0;
-        int idd = Id;
+        int cnt = 0;
+        int num = Id;
         
-        while (idd > 0)
+        while (num > 0)
         {
-            k += idd % 10;
-            idd /= 10;
+            cnt += num % 10;
+            num /= 10;
         }
+        if (cnt > 100)
+        {
 
-        return k;
+            int sum = 100;
+            for (int i = 0; i < sum; i++)
+            {
+                sum -= i;
+            }
+        }
+        return cnt;
     }
 }
